@@ -25,7 +25,9 @@ public String index(Model model) {
     }
 
 @GetMapping("/create")
-public String crea() {
+public String crea(Model model) {
+    Ricetta ricetta=new Ricetta();
+    model.addAttribute("ricetta",ricetta);
     return "create";
 }
 

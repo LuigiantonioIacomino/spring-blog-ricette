@@ -1,13 +1,43 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resource :: head()"></head>
 <body>
+<h1>Crea una ricetta</h1>
+<form
+        id="create-ricetta"
+        class="row g-3"
+        th:object="${ricetta}"
+        method="post"
+        th:action="@{ricetta/create}"
+>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputEmail4" th:field="*{title}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Ingredienti</label>
+        <input type="text" class="form-control" id="inputPassword4" th:field="*{ingredienti}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Foto</label>
+        <input type="text" class="form-control" id="inputAddress" th:field="*{foto}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Tempo preparazione</label>
+        <input type="text" class="form-control" id="inputAddress2" th:field="*{tempo_preparazione}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">Numero porzioni</label>
+        <input type="text" class="form-control" id="inputCity" th:field="*{numero_porzioni}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputTesto" class="form-label">Testo</label>
+        <input type="text" class="form-control" id="inputTesto" th:field="*{testo}">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Crea</button>
+    </div>
+</form>
 
 </body>
 </html>
