@@ -3,11 +3,13 @@ import com.learning.blogricette.model.Ricetta;
 import com.learning.blogricette.repository.RicettaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
@@ -58,6 +60,21 @@ public String store(@Valid @ModelAttribute("ricetta") Ricetta formRicetta, Bindi
     else {
         Ricetta savedRicetta = ricettaRepository.save(formRicetta);
         return "redirect:/ricetta/detail/" + savedRicetta.getId();
+    }
+
+}
+
+
+@PostMapping("/delete/{id}")
+    public String cancella(@PathVariable Integer id,Model model) {
+    Optional<Ricetta> result=ricettaRepository.findById(id);
+    if(result.isPresent()) {
+        ricettaRepository.deleteById(id);
+        model.addAttribute("ricettaList",ricettaRepository.findAll());
+        return "show";
+    }
+    else {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book with di " + id + " not found");
     }
 
 }
