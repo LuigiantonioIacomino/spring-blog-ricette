@@ -1,15 +1,16 @@
 package com.learning.blogricette.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
 @Table(name = "ricette")
 public class Ricetta {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String title;
-    private List<String> ingredienti;
+    private String ingredienti;
     private String foto;
     private int tempoDiPreparazione;
     private int numeroDiPorzioni;
@@ -23,13 +24,7 @@ public class Ricetta {
         this.title = title;
     }
 
-    public List<String> getIngredienti() {
-        return ingredienti;
-    }
 
-    public void setIngredienti(List<String> ingredienti) {
-        this.ingredienti = ingredienti;
-    }
 
     public String getFoto() {
         return foto;
@@ -61,5 +56,21 @@ public class Ricetta {
 
     public void setTestoDellaRicetta(String testoDellaRicetta) {
         this.testoDellaRicetta = testoDellaRicetta;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getIngredienti() {
+        return ingredienti;
+    }
+
+    public void setIngredienti(String ingredienti) {
+        this.ingredienti = ingredienti;
     }
 }
