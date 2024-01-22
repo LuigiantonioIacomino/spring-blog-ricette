@@ -3,13 +3,34 @@
 <head th:replace="fragments/resource :: head()"></head>
 <body style="background-image:url('https://plus.unsplash.com/premium_photo-1675451537771-0dd5b06b3985?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');background-size:cover">
 <h1>Lista delle pizze</h1>
-<table style="background-color:black;">
+<table class="bg-black">
     <tbody>
     <tr th:each="ricetta : ${ricettaList}">
         <td><img th:src="${ricetta.foto}" alt="" width="72px" height="72px"></td>
-        <td class="p-4"><i class="fa-solid fa-book" style="color: #ff0000;"></i></td>
-        <td class="p-4"><i class="fa-solid fa-pen-to-square" style="color: #ec0909;"></i></td>
-        <td class="p-4"><i class="fa-solid fa-trash" style="color: #e01515;"></i></td>
+        <td class="p-4">
+            <form
+                    th:action="@{ricetta/detail/{id}(id=${ricetta.id})}"
+                    method="post"
+            >
+                <button type="submit" class="bg-black border-0"><i class="fa-solid fa-book" style="color: #ff0000;"></i></button>
+            </form>
+        </td>
+        <td class="p-4">
+            <form
+                th:action="@{ricetta/edit/{id}(id=${ricetta.id})}"
+                method="post"
+             >
+            <button type="submit" class="bg-black border-0"><i class="fa-solid fa-pen-to-square" style="color: #ec0909;"></i></button>
+           </form>
+        </td>
+        <td class="p-4">
+            <form
+                    th:action="@{ricetta/delete/{id}(id=${ricetta.id})}"
+                    method="post"
+            >
+                <button type="submit" class="bg-black border-0"><i class="fa-solid fa-trash" style="color: #e01515;"></i></button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
