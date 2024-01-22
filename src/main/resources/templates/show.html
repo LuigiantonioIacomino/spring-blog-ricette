@@ -2,10 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resource :: head()"></head>
 <body style="background-image:url('https://plus.unsplash.com/premium_photo-1675451537771-0dd5b06b3985?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');background-size:cover">
-<h1>Lista delle pizze</h1>
+<form
+        id="ricetta-search"
+        th:action="@{/ricetta/search}"
+        method="get"
+>
+    <div class="input-group">
+        <input class="form-control" type="text" name="keyword" id="keyword"
+               placeholder="Search books by title or authors" th:value="${preloadSearch}">
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+</form>
 <table class="bg-black">
     <tbody>
     <tr th:each="ricetta : ${ricettaList}">
+        <td th:text="${ricetta.nome}" style="color:yellow"></td>
         <td><img th:src="${ricetta.foto}" alt="" width="72px" height="72px"></td>
         <td class="p-4">
             <a th:href="@{/ricetta/detail/{id}(id=${ricetta.id})}"><i class="fa-solid fa-book" style="color: #ff0000;"></i></a>

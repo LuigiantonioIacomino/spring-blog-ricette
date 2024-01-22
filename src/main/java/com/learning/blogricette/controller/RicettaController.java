@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -25,6 +26,19 @@ private RicettaRepository ricettaRepository;
 @GetMapping
 public String index(Model model) {
         model.addAttribute("ricettaList",ricettaRepository.findAll());
+        return "show";
+    }
+
+    @GetMapping("/search")
+    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
+        List<Ricetta> ricettaList;
+        if (searchKeyword != null) {
+            ricettaList = ricettaRepository.findByNomeContaining(searchKeyword);
+        } else {
+            ricettaList = ricettaRepository.findAll();
+        }
+        model.addAttribute("ricettaList",ricettaList);
+        model.addAttribute("preloadSearch", searchKeyword);
         return "show";
     }
 
