@@ -79,6 +79,30 @@ public String store(@Valid @ModelAttribute("ricetta") Ricetta formRicetta, Bindi
 
 }
 
+@GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id,Model model) {
+    Optional<Ricetta> result=ricettaRepository.findById(id);
+    Ricetta ricetta= result.get();
+    Ricetta ricettaTem=new Ricetta();
+    ricettaTem.setId(ricetta.getId());
+    ricettaTem.setNome(ricetta.getNome());
+    ricettaTem.setIngredienti(ricetta.getIngredienti());
+    ricettaTem.setFoto(ricetta.getFoto());
+    ricettaTem.setTempo_preparazione(ricetta.getTempo_preparazione());
+    ricettaTem.setNumero_porzioni(ricetta.getNumero_porzioni());
+    ricettaTem.setTesto(ricetta.getTesto());
+    model.addAttribute("ricetta",ricettaTem);
+    return "edit";
+}
+
+@PostMapping("/edit/{id}")
+    public String edit_due(@PathVariable Integer id,@Valid @ModelAttribute("ricetta") Ricetta formRicetta) {
+    Ricetta savedRicetta = ricettaRepository.save(formRicetta);
+    return "detail";
+}
+
+
+
 
 
 

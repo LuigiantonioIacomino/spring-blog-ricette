@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resource :: head()"></head>
+
+<body>
+<form
+        id="edit-ricetta"
+        class="row g-3"
+        th:object="${ricetta}"
+        method="post"
+        th:action="@{/ricetta/edit/{id}(id=${ricetta.id})}"
+>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputEmail4" th:field="*{nome}" th:errorClass="is-invalid">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Ingredienti</label>
+        <input type="text" class="form-control" id="inputPassword4" th:field="*{ingredienti}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Foto</label>
+        <input type="text" class="form-control" id="inputAddress" th:field="*{foto}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Tempo preparazione</label>
+        <input type="text" class="form-control" id="inputAddress2" th:field="*{tempo_preparazione}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">Numero porzioni</label>
+        <input type="text" class="form-control" id="inputCity" th:field="*{numero_porzioni}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputTesto" class="form-label">Testo</label>
+        <input type="text" class="form-control" id="inputTesto" th:field="*{testo}">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Modifica</button>
+    </div>
+</form>
+</body>
+</html>
