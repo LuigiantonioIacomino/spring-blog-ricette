@@ -12,9 +12,9 @@ public class Ricetta {
     private String title;
     private String ingredienti;
     private String foto;
-    private int tempoDiPreparazione;
-    private int numeroDiPorzioni;
-    private String testoDellaRicetta;
+    private int tempo_preparazione;
+    private int numero_porzioni;
+    private String testo;
 
     public String getTitle() {
         return title;
@@ -34,28 +34,28 @@ public class Ricetta {
         this.foto = foto;
     }
 
-    public int getTempoDiPreparazione() {
-        return tempoDiPreparazione;
+    public int getTempo_preparazione() {
+        return tempo_preparazione;
     }
 
-    public void setTempoDiPreparazione(int tempoDiPreparazione) {
-        this.tempoDiPreparazione = tempoDiPreparazione;
+    public void setTempo_preparazione(int tempo_preparazione) {
+        this.tempo_preparazione = tempo_preparazione;
     }
 
-    public int getNumeroDiPorzioni() {
-        return numeroDiPorzioni;
+    public int getNumero_porzioni() {
+        return numero_porzioni;
     }
 
-    public void setNumeroDiPorzioni(int numeroDiPorzioni) {
-        this.numeroDiPorzioni = numeroDiPorzioni;
+    public void setNumero_porzioni(int numero_porzioni) {
+        this.numero_porzioni = numero_porzioni;
     }
 
-    public String getTestoDellaRicetta() {
-        return testoDellaRicetta;
+    public String getTesto() {
+        return testo;
     }
 
-    public void setTestoDellaRicetta(String testoDellaRicetta) {
-        this.testoDellaRicetta = testoDellaRicetta;
+    public void setTesto(String testo) {
+        this.testo = testo;
     }
 
     public Integer getId() {
