@@ -1,6 +1,7 @@
 package com.learning.blogricette.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -9,22 +10,22 @@ public class Ricetta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
+    @NotEmpty(message = "non deve essere vuoto")
+    private String nome;
     private String ingredienti;
     private String foto;
     private int tempo_preparazione;
     private int numero_porzioni;
     private String testo;
 
-    public String getTitle() {
-        return title;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
-
 
     public String getFoto() {
         return foto;

@@ -8,11 +8,16 @@
         class="row g-3"
         th:object="${ricetta}"
         method="post"
-        th:action="@{ricetta/create}"
+        th:action="@{/ricetta/create}"
 >
     <div class="col-md-6">
         <label for="inputEmail4" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="inputEmail4" th:field="*{title}">
+        <input type="text" class="form-control" id="inputEmail4" th:field="*{nome}" th:errorClass="is-invalid">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Ingredienti</label>

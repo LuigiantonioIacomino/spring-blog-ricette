@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface RicettaRepository extends JpaRepository<Ricetta,Integer> {
     Optional<Ricetta> findById(Integer id);
+    Optional<Ricetta> findByNome(String nome);
 }
