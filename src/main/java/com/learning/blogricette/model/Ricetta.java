@@ -1,7 +1,12 @@
 package com.learning.blogricette.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.util.List;
 
+@Entity
+@Table(name = "ricette")
 public class Ricetta {
     private String title;
     private List<String> ingredienti;
