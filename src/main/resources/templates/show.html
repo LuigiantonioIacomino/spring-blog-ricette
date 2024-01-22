@@ -8,12 +8,7 @@
     <tr th:each="ricetta : ${ricettaList}">
         <td><img th:src="${ricetta.foto}" alt="" width="72px" height="72px"></td>
         <td class="p-4">
-            <form
-                    th:action="@{ricetta/detail/{id}(id=${ricetta.id})}"
-                    method="post"
-            >
-                <button type="submit" class="bg-black border-0"><i class="fa-solid fa-book" style="color: #ff0000;"></i></button>
-            </form>
+            <a th:href="@{/ricetta/detail/{id}(id=${ricetta.id})}"><i class="fa-solid fa-book" style="color: #ff0000;"></i></a>
         </td>
         <td class="p-4">
             <form
@@ -34,6 +29,9 @@
     </tr>
     </tbody>
 </table>
+<div style="text-align:center;position:relative; top:80px">
+<a th:href="@{/ricetta/create}" class="btn btn-danger p-3">Crea una ricetta</a>
+</div>
 
 </body>
 </html>
